@@ -11,6 +11,15 @@
 <script>
 
 function contaVizinhosVivos(i,y,grid){
+    const deltaCelulaContigua = [
+        [-1,-1], [-1,0], [-1,-1],
+        [0,-1], [0,1],
+        [1,-1], [1,0], [1,1],
+    ]
+    let coordVizinhos = []
+    for (let k = 0; k < deltaCelulaContigua.length; k++){
+        coordVizinhos.push([i + deltaCelulaContigua[k][0], y + deltaCelulaContigua[k][0]])
+    }
     console.log(i, y, grid)
     return 0
 }
