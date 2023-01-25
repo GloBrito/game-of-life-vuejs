@@ -1,13 +1,12 @@
 <template>
     <div >
-        <h1>Hello Life {{ msg }}</h1>
     <table>
-        <tr>
-            <td class= "celula_viva"></td>
+        <tr v -for="line in grid" : key="line">
+            <td></td>
             <td></td>
         </tr>
         <tr>
-            <td></td>
+            <td class= "celula_viva"></td>
             <td></td>
         </tr>
     </table>
@@ -16,9 +15,21 @@
 
 <script>
 export default{
+    name: "Life",
     data() {
         return {
-            msg: '{{vai aparecer uma mensagem aqui}}'
+           grid: [
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+           ]
         }
     }
 }
