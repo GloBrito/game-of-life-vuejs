@@ -1,8 +1,8 @@
 <template>
     <div>
         <table>
-            <tr v-for="line in grid" :key="line">
-                <td v-for="cell in line" :key="cell" :class="{vivo: cell==1}"></td>
+            <tr v-for="(line, i) in grid" :key="i">
+                <td v-for="(celula, y) in line" :key="y" :class="{celulaViva: celula==1}"></td>
                 <td></td>
             </tr>
         </table>
@@ -13,8 +13,8 @@
 export default({
     name: 'Life',
     data() {
-        return{
-            grid: [
+    return {
+        grid: [
             [0,0,0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0,0,0],
             [0,1,1,1,0,1,1,1,0],
@@ -25,9 +25,30 @@ export default({
             [0,0,0,0,1,0,0,0,0],
             [0,0,0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0,0,0],
-            ]
-        }        
-    },
+        ]
+    }
+},
+methods: {
+nextStep(){
+    this.grid = [
+            [0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0],
+            [0,1,1,1,0,1,1,1,0],
+            [1,0,0,0,1,0,1,0,1],
+            [0,1,0,0,0,0,0,1,0],
+            [0,0,1,0,0,0,1,0,0],
+            [0,0,0,1,0,1,0,0,0],
+            [0,0,0,0,1,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0],
+        ]
+    }    
+},
+mounted(){
+    setInterval(() => {
+        this.nextStep()
+    }, 1000)
+  }
 })
 </script>
 
@@ -39,7 +60,7 @@ td {
     width: 30px;
     height: 30px;
 }
-.vivo{
+.celulaViva{
     background-color: red;
 }
 </style>
