@@ -8,13 +8,44 @@
         </table>
     </div>    
 </template>
-
 <script>
-export default({
+
+function contaVizinhosVivos(i,y,grid){
+    console.log(i, y, grid)
+    return 0
+}
+function _nextState(grid){
+    const [x, z] = [grid.length, grid[0].length]
+    let newGrid = new Array(x)
+    for (let i = 0; i < x; i++){
+        newGrid[i] = new Array(z).fill(0)
+    }
+    for(let i = 0; i < x; i++){
+        for (let y = 0; y < z; y++){
+           let vizinhosVivos = contaVizinhosVivos(i,y,grid)
+            if(grid[i][y] == 1){
+                if (vizinhosVivos == 2 || vizinhosVivos == 3){
+                    newGrid[i][y] = 1
+                } else {
+                    newGrid[i][y] = 0
+                }    
+            } else {
+                if (vizinhosVivos == 3){
+                    newGrid[i][y] = 1
+                } else {
+                    newGrid[i][y] = 0
+                }
+            }
+        }
+    }    
+    return newGrid
+}
+
+export default ({
     name: 'Life',
     data() {
     return {
-        grid: [
+        grid: [ //matriz inicial
             [0,0,0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0,0,0],
             [0,1,1,1,0,1,1,1,0],
@@ -28,27 +59,21 @@ export default({
         ]
     }
 },
-methods: {
-nextStep(){
-    this.grid = [
-            [0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0],
-            [0,1,1,1,0,1,1,1,0],
-            [1,0,0,0,1,0,1,0,1],
-            [0,1,0,0,0,0,0,1,0],
-            [0,0,1,0,0,0,1,0,0],
-            [0,0,0,1,0,1,0,0,0],
-            [0,0,0,0,1,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0],
-        ]
-    }    
+    methods: {
+    nextStep() {
+        this.grid = _nextState(this.grid)
+    },    
 },
-mounted(){
-    setInterval(() => {
-        this.nextStep()
-    }, 1000)
-  }
+methods: {
+    nextStep(){
+            this.grid = _nextState(this.grid)
+        }
+    },
+    mounted(){
+        setInterval (() => {
+            this.nextStep()
+        }, 300)
+    }
 })
 </script>
 
@@ -60,7 +85,7 @@ td {
     width: 30px;
     height: 30px;
 }
-.celulaViva{
-    background-color: red;
+.vivo{
+    background-color: yellow;
 }
 </style>
