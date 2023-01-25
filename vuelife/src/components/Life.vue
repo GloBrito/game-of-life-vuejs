@@ -1,49 +1,45 @@
 <template>
-    <div >
-    <table>
-        <tr v -for="line in grid" : key="line">
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td class= "celula_viva"></td>
-            <td></td>
-        </tr>
-    </table>
-    </div>
+    <div>
+        <table>
+            <tr v-for="line in grid" :key="line">
+                <td v-for="cell in line" :key="cell" :class="{vivo: cell==1}"></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>    
 </template>
 
 <script>
-export default{
-    name: "Life",
+export default({
+    name: 'Life',
     data() {
-        return {
-           grid: [
-                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
-                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
-                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
-                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
-                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
-                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
-                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
-                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
-                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
-                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
-           ]
-        }
-    }
-}
+        return{
+            grid: [
+            [0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0],
+            [0,1,1,1,0,1,1,1,0],
+            [1,0,0,0,1,0,1,0,1],
+            [0,1,0,0,0,0,0,1,0],
+            [0,0,1,0,0,0,1,0,0],
+            [0,0,0,1,0,1,0,0,0],
+            [0,0,0,0,1,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0],
+            ]
+        }        
+    },
+})
 </script>
 
 <style>
-table, th, td {
-    border: 1px solid
+table, th, td{
+    border: 1px solid;
 }
-td{
+td {
     width: 30px;
     height: 30px;
 }
-.celula_viva{
+.vivo{
     background-color: red;
 }
 </style>
