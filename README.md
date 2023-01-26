@@ -14,3 +14,8 @@ O jogo da vida é um autômato celular desenvolvido pelo matemático britânico 
 
 ## Não ficou muito claro, né?!
 Então assiste esse [vídeo](https://www.youtube.com/watch?v=yLiwUjnRJBE) de um professor maravilhosamente didático que acho que vai clarear as idéias :wink:
+
+
+<div align="center">
+<img src="https://user-images.githubusercontent.com/103264347/214900061-dbe6370c-c265-42b4-82d0-261108ee485e.png" width="400px"/>
+</div>
