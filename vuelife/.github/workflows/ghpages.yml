@@ -1,4 +1,4 @@
-name: publica no ghpages
+name: gloriosa
 on:
   push:
     branches:
@@ -12,6 +12,7 @@ jobs:
         with:
           node-version: 19
       - run: npm ci
+      - run: cd vuelife
       - run: npm run build
       - uses: JamesIves/github-pages-deploy-action@4.1.7
         with:
